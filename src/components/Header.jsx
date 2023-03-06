@@ -12,7 +12,10 @@ const Header = () => {
           className={`nav__icon${state ? " active" : ""}`}
           onClick={() => setState(!state)}
         >
-          <img src="./images/icon-hamburger.svg" alt="nav icon" />
+          <img
+            src={`./images/icon-${state ? "close" : "hamburger"}.svg`}
+            alt="nav icon"
+          />
         </button>
         <nav className="header__nav">
           <ul className="header__nav__links">
