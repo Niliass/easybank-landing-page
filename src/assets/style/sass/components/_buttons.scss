@@ -1,0 +1,30 @@
+@use "../abstracts/" as *;
+
+.nav__icon {
+  @include media($md) {
+    display: none;
+  }
+}
+header {
+  .invite__btn {
+    display: none;
+    @include media($lg) {
+      display: block;
+      margin-block: 1rem;
+    }
+  }
+}
+.invite__btn {
+  font-size: 0.85rem;
+  color: $white;
+  background: $grad;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  &:hover {
+    background: linear-gradient(
+      to right,
+      lighten($lime-green, 15%),
+      lighten($b-cyan, 15%)
+    );
+  }
+}

@@ -1,0 +1,72 @@
+@use "../abstracts/" as *;
+
+footer {
+  background-color: $d-blue;
+  padding-block: clamp(2.5rem, 8vw, 3.5rem);
+  %flex {
+    @include flex(null, center, column, 1.75rem);
+    text-align: center;
+  }
+  .container {
+    @extend %flex;
+    color: $white;
+    @include media($lg) {
+      flex-direction: row;
+      gap: 5rem;
+    }
+  }
+  .logo__grp {
+    @extend %flex;
+    @include media($lg) {
+      align-items: flex-start;
+      gap: 3rem;
+    }
+  }
+  .social {
+    &__links {
+      display: flex;
+      gap: 1rem;
+    }
+    &__link {
+      @include trans;
+      font-size: 1.15rem;
+      &:hover {
+        color: lighten($lime-green, 5%);
+      }
+    }
+  }
+  .#{&}__nav {
+    &__links {
+      @include media($md) {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+        max-width: 100%;
+      }
+    }
+    &__link {
+      font-weight: 300;
+      padding-block: 0.5rem;
+      display: inline-block;
+      @include trans;
+      &:hover {
+        color: $lime-green;
+      }
+    }
+  }
+  .nav__grp {
+    @extend %flex;
+    @include media($lg) {
+      flex: 1;
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+  .rights__grp {
+    @extend %flex;
+    @include media($lg) {
+      align-items: flex-end;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@use "../abstracts/" as *;
+
+header {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background-color: $white;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, $d-blue, transparent);
+    opacity: 0;
+    @include trans;
+    @include media($md) {
+      display: none;
+    }
+  }
+  .container {
+    @include flex(space-between, center, null, null);
+    background: inherit;
+    min-height: 66.5px;
+  }
+  .#{&}__nav {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 1;
+    width: min(400px, calc(100% - 50px));
+    background-color: $white;
+    padding-block: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    @include trans;
+    @include media($md) {
+      display: grid;
+      align-self: stretch;
+      position: static;
+      padding-block: 0;
+      width: auto;
+      border-radius: unset;
+      transform: unset;
+      opacity: 1;
+      visibility: visible;
+    }
+    &__links {
+      @include media($md) {
+        display: flex;
+        gap: 1.5rem;
+      }
+    }
+    &__link {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      color: $d-blue;
+      @include media($md) {
+        font-size: 0.9rem;
+        color: $grayish-blue;
+        @include trans;
+        &:hover {
+          color: $d-blue;
+        }
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        background: $grad;
+        height: 5px;
+        width: 0;
+        opacity: 0;
+        @include trans;
+      }
+      &:hover::before {
+        opacity: 1;
+        width: min(100px, 100%);
+      }
+      a {
+        display: grid;
+        place-items: center;
+        padding-block: 0.55rem;
+      }
+    }
+  }
+  &:has(.active) {
+    &::after {
+      opacity: 1;
+    }
+    .header__nav {
+      top: calc(100% + 1rem);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
